@@ -5,6 +5,7 @@ use crate::MeshletDebugMaterial;
 const ORIGINAL_GLB: Transform = Transform::from_xyz(0., 0., 0.);
 
 const MONKEY_MESHLET: Transform = Transform::from_xyz(-3., 0., 0.);
+const BIG_MONKEY_MESHLET: Transform = Transform::from_xyz(-6., 0., 0.);
 const BUNNY_MESHLET: Transform = Transform::from_xyz(3., 0., 0.);
 
 pub fn plugin(app: &mut App) {
@@ -30,8 +31,15 @@ fn setup(
     let bunny_meshlet = assets.load("meshlets/bunny.meshlet_mesh");
     commands.spawn((
         MeshletMesh3d(bunny_meshlet),
-        MeshMaterial3d(debug_material),
+        MeshMaterial3d(debug_material.clone()),
         BUNNY_MESHLET,
+    ));
+
+    let big_monke_meshlet = assets.load("meshlets/bigger_monkey.meshlet");
+    commands.spawn((
+        MeshletMesh3d(big_monke_meshlet),
+        MeshMaterial3d(debug_material.clone()),
+        BIG_MONKEY_MESHLET,
     ));
     //let
 }
