@@ -6,7 +6,7 @@ pub fn plugin(app: &mut App) {
 }
 
 fn setup(mut commands: Commands) {
-    commands.spawn(Camera3d::default());
+    commands.spawn((Camera3d::default(), Msaa::Off));
 }
 
 fn move_cam(cam: Single<&mut Transform, With<Camera3d>>, time: Res<Time>) {
