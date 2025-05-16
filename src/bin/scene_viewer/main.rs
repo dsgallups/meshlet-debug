@@ -19,9 +19,9 @@ use bevy::{
     },
 };
 
-mod camera_controller;
-
 mod animation_plugin;
+mod camera_controller;
+mod log;
 mod morph_viewer_plugin;
 mod scene_viewer_plugin;
 
@@ -79,6 +79,7 @@ fn main() {
         CameraControllerPlugin,
         SceneViewerPlugin,
         MorphViewerPlugin,
+        log::plugin,
     ))
     .insert_resource(args)
     .add_systems(Startup, setup)
