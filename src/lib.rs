@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use bevy::{
     pbr::experimental::meshlet::MeshletPlugin, prelude::*, render::render_resource::AsBindGroup,
 };
