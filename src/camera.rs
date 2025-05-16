@@ -14,7 +14,7 @@ fn move_cam(cam: Single<&mut Transform, With<Camera3d>>, time: Res<Time>) {
 
     let mut transform = cam.into_inner();
 
-    let orbit_scale = 8.0 + ops::sin(now / 10.0) * 7.0;
+    let orbit_scale = 8.0 + ops::sin(now) * 40.0;
     *transform = Transform::from_xyz(
         ops::cos(now / 5.0) * orbit_scale,
         12.0 - orbit_scale / 2.0,

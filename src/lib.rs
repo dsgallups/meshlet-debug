@@ -9,7 +9,15 @@ pub struct AppPlugin;
 impl Plugin for AppPlugin {
     fn build(&self, app: &mut App) {
         app.add_plugins((
-            DefaultPlugins,
+            DefaultPlugins.set(WindowPlugin {
+                primary_window: Window {
+                    position: WindowPosition::Centered(MonitorSelection::Index(1)),
+                    focused: false,
+                    ..default()
+                }
+                .into(),
+                ..default()
+            }),
             MeshletPlugin {
                 cluster_buffer_slots: 8192,
             },
