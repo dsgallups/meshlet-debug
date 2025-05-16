@@ -95,6 +95,7 @@ fn setup_mesh_processing(
 }
 
 fn process_loaded_meshes(
+    mut commands: Commands,
     mut state: ResMut<MeshProcessingState>,
     config: Res<MeshProcessingConfig>,
     asset_server: Res<AssetServer>,
@@ -202,6 +203,6 @@ fn process_loaded_meshes(
     // Exit when all files are processed and all tasks are complete
     if state.pending_files.is_empty() && state.active_tasks.load(Ordering::SeqCst) == 0 {
         println!("\n{}All processing complete{}", GREEN, RESET);
-        std::process::exit(0);
+        commands.send_event(AppExit::Success);
     }
 }
