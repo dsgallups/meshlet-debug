@@ -4,7 +4,8 @@ use crate::MeshletDebugMaterial;
 
 const ORIGINAL_GLB: Transform = Transform::from_xyz(0., 0., 0.);
 
-const PREPROCESSED_MESHLET: Transform = Transform::from_xyz(-3., 0., 0.);
+const MONKEY_MESHLET: Transform = Transform::from_xyz(-3., 0., 0.);
+const BUNNY_MESHLET: Transform = Transform::from_xyz(3., 0., 0.);
 
 pub fn plugin(app: &mut App) {
     app.add_systems(Startup, setup);
@@ -18,14 +19,19 @@ fn setup(
     let original_glb = assets.load("models/monke.glb#Scene0");
     commands.spawn((SceneRoot(original_glb), ORIGINAL_GLB));
 
-    let meshlet_mesh = assets.load("meshlets/monke.meshlet");
+    let monkey_meshlet = assets.load("meshlets/monke.meshlet");
     let debug_material = debug_materials.add(MeshletDebugMaterial::default());
 
     commands.spawn((
-        MeshletMesh3d(meshlet_mesh),
-        MeshMaterial3d(debug_material),
-        PREPROCESSED_MESHLET,
+        MeshletMesh3d(monkey_meshlet),
+        MeshMaterial3d(debug_material.clone()),
+        MONKEY_MESHLET,
     ));
-
+    let bunny_meshlet = assets.load("meshlets/bunny.meshlet_mesh");
+    commands.spawn((
+        MeshletMesh3d(bunny_meshlet),
+        MeshMaterial3d(debug_material),
+        BUNNY_MESHLET,
+    ));
     //let
 }
