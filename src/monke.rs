@@ -1,10 +1,7 @@
 use bevy::prelude::*;
-mod camera;
-fn main() {
-    App::new()
-        .add_plugins((DefaultPlugins, camera::plugin))
-        .add_systems(Startup, setup)
-        .run();
+
+pub fn plugin(app: &mut App) {
+    app.add_systems(Startup, setup);
 }
 
 fn setup(mut commands: Commands, assets: Res<AssetServer>) {

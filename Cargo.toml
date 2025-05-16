@@ -2,6 +2,7 @@
 name = "meshlet-debug"
 version = "0.1.0"
 edition = "2024"
+default-run = "demo"
 
 [dependencies]
 bevy = { version = "0.16.0", features = ["meshlet", "meshlet_processor"] }
