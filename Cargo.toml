@@ -5,7 +5,7 @@ edition = "2024"
 default-run = "demo"
 
 [dependencies]
-bevy = { version = "0.16.0", features = ["meshlet", "meshlet_processor"] }
+bevy = { path = "../bevy", features = ["meshlet", "meshlet_processor"] }
 
 
 [profile.dev]
