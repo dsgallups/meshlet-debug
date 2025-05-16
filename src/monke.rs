@@ -5,8 +5,11 @@ use crate::MeshletDebugMaterial;
 const ORIGINAL_GLB: Transform = Transform::from_xyz(0., 0., 0.);
 
 const MONKEY_MESHLET: Transform = Transform::from_xyz(-3., 0., 0.);
-const BIG_MONKEY_MESHLET: Transform = Transform::from_xyz(-6., 0., 0.);
+const HIGH_POLY_MONKE_MESHLET: Transform = Transform::from_xyz(-6., 0., 0.);
 const BUNNY_MESHLET: Transform = Transform::from_xyz(3., 0., 0.);
+
+const BIRCH: Transform = Transform::from_xyz(5., 0., -3.);
+const BIRCH_MESHLET: Transform = Transform::from_xyz(-5., 0., -3.);
 
 pub fn plugin(app: &mut App) {
     app.add_systems(Startup, setup);
@@ -39,7 +42,17 @@ fn setup(
     commands.spawn((
         MeshletMesh3d(big_monke_meshlet),
         MeshMaterial3d(debug_material.clone()),
-        BIG_MONKEY_MESHLET,
+        HIGH_POLY_MONKE_MESHLET,
+    ));
+
+    let birch = assets.load("models/birch.glb#Scene0");
+    commands.spawn((SceneRoot(birch), BIRCH));
+
+    let birch_meshlet = assets.load("meshlets/birch.meshlet");
+    commands.spawn((
+        MeshletMesh3d(birch_meshlet),
+        MeshMaterial3d(debug_material.clone()),
+        BIRCH_MESHLET,
     ));
     //let
 }
