@@ -2,14 +2,16 @@ use bevy::{pbr::experimental::meshlet::MeshletMesh3d, prelude::*};
 
 use crate::MeshletDebugMaterial;
 
-const ORIGINAL_GLB: Transform = Transform::from_xyz(0., 0., 0.);
+const FLOOR: f32 = -5.;
 
-const MONKEY_MESHLET: Transform = Transform::from_xyz(-3., 0., 0.);
-const HIGH_POLY_MONKE_MESHLET: Transform = Transform::from_xyz(-6., 0., 0.);
-const BUNNY_MESHLET: Transform = Transform::from_xyz(3., 0., 0.);
+const ORIGINAL_GLB: Transform = Transform::from_xyz(0., FLOOR, 3.);
 
-const BIRCH: Transform = Transform::from_xyz(5., 0., -3.);
-const BIRCH_MESHLET: Transform = Transform::from_xyz(-5., 0., -3.);
+const MONKEY_MESHLET: Transform = Transform::from_xyz(-3., FLOOR, 3.);
+const HIGH_POLY_MONKE_MESHLET: Transform = Transform::from_xyz(-6., FLOOR, 3.);
+const BUNNY_MESHLET: Transform = Transform::from_xyz(3., FLOOR, 3.);
+
+const BIRCH: Transform = Transform::from_xyz(5., FLOOR, 0.);
+const BIRCH_MESHLET: Transform = Transform::from_xyz(-5., FLOOR, 0.);
 
 pub fn plugin(app: &mut App) {
     app.add_systems(Startup, setup);
